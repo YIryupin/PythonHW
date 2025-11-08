@@ -12,15 +12,12 @@ for word in words:
         digits[i] = int(word)
         i += 1
 
-checked = [[0]*len(words)]*len(words)
 i = 0
 while i <= len(digits) - 1:
-    j = 0
+    j = i+1
     while j <= len(digits) - 1:
-        if digits[i]+digits[j] == target and checked[i][j] == 0 and i!=j:
+        if digits[i]+digits[j] == target:
             print('Решение:',i, j)
-            checked[i][j] = 1
-            checked[j][i] = 1
         j += 1
     i += 1 
 
