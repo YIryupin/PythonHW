@@ -26,12 +26,7 @@ async def hello_commands(message: types.Message):
 
 @router.message(lambda message: message.text and message.text == "ℹ️ Правила")
 async def hello_commands(message: types.Message):
-    await message.answer("Правила игры Камень Ножницы Бумага: "
-                         "2 игрока выбирают Камень Ножницы или Бумагу, "
-                         "«Камень» побеждает ножницы («камень ломает ножницы»), "
-                         "«Бумага» побеждает камень («бумага накрывает камень»), "
-                         "«Ножницы» побеждают бумагу («ножницы разрезают бумагу»)"
-                         )
+    await message.answer(RPSGame.getHelp())
 
 #Обработка неизвестных команд 
 @router.message(lambda message: message.text and message.text.startswith('/'))
