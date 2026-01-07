@@ -8,6 +8,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.types import CallbackQuery
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types import ReplyKeyboardRemove
+from aiogram.utils import KeyBoardBuilder #удобный класс для создания больших меню, по InlineKeyboard не работает
 
 
 load_dotenv()  # загружаем переменные окружения
@@ -70,7 +71,8 @@ def getReplyKeyboard():
             [KeyboardButton(text="ℹ️ О боте"), KeyboardButton(text="❌ Скрыть клавиатуру")],
         ],
         resize_keyboard=True,  # Автоматическое изменение размера
-        input_field_placeholder="Выберите действие..."  # Подсказка в поле ввода
+        input_field_placeholder="Выберите действие...",  # Подсказка в поле ввода
+        one_time_keyboard=True #скрывает кнопку после использования пользователем
     )
     return keyboard
 
@@ -91,7 +93,8 @@ if __name__ == "__main__":
     asyncio.run(main())
 
 #Вопросы:
-#Различия в принципах работы меню? Чем отличается колбак от простой обработки сообщений?
-#Лямбда выражения
-#Символы ❌
-#Навигация по коду
+#InlineKeyboard - полноценное меню с колбаком, ReplyKeyboard - эмулятор ввода с клавиатуры
+#Символы ❌ - копировать из телеги
+#Навигация по коду, переход к методу F12
+#импорт библиотек - как посмотреть что можно импортировать
+#работа с фото\графикой

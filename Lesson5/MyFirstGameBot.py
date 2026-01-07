@@ -1,4 +1,3 @@
-import random
 import os
 import asyncio
 from aiogram import Bot, Dispatcher, Router, types

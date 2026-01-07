@@ -8,7 +8,7 @@ class RPSGame():
                       ["P2","N","P1"],
                       ["P1","P2","N"]]
 
-    helpText = '''Правила игры Камень Ножницы Бумага: 
+    HELP_TEXT = '''Правила игры Камень Ножницы Бумага: 
                2 игрока выбирают Камень Ножницы или Бумагу, 
                «Камень» побеждает ножницы («камень ломает ножницы»), 
                «Бумага» побеждает камень («бумага накрывает камень»), 
@@ -23,8 +23,9 @@ class RPSGame():
         number = random.randint(0, 2)
         return self.__gameChoice[number]
     
-    def getHelp(self):
-        return self.helpText
+    @staticmethod
+    def getHelp():
+        return RPSGame.HELP_TEXT
 
     
 #game = RPSGame()
