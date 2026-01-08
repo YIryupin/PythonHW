@@ -62,7 +62,7 @@ async def GameRules_commands(message: types.Message):
 @router.message(lambda message: message.text and message.text.startswith('/'))
 async def unknown_commands(message: types.Message):
     dbLib.CreateOrUpdateUser(message.from_user.id, message.from_user.full_name)
-    await message.answer("Неизвестная команда, используйте меню")
+    await message.answer("Неизвестная команда, используйте меню", reply_markup=getMainMenu())
 
 
 #Обработка любого другого сообщения а также сообщений от ReplyKeyboard
@@ -144,6 +144,7 @@ def getMainMenu() -> ReplyKeyboardMarkup:
         ],
         resize_keyboard=True,  # Автоматическое изменение размера
         input_field_placeholder="Выберите игру...",  # Подсказка в поле ввода
+        selective=True,  # ← Ключевой параметр для iOS
         one_time_keyboard=True #скрывает кнопку после использования пользователем???
     )
     return keyboard
@@ -159,6 +160,7 @@ def getGameMenu(game_name: str):
         ],
         resize_keyboard=True,  # Автоматическое изменение размера
         input_field_placeholder=f"Игра: {game_name}",  # Подсказка в поле ввода
+        selective=True,  # ← Ключевой параметр для iOS
         one_time_keyboard=True #скрывает кнопку после использования пользователем
     )
     return keyboard
