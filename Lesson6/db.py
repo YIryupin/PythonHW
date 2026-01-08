@@ -45,6 +45,8 @@ class DatabaseManager:
                 print(f"Database is not ready yet (attempt {attempt}/{max_attempts}): {exc}")
                 time.sleep(delay_seconds)
         if self.connection is None: RuntimeError("Database is not available after several attempts")
+        #Авто завершение транзакций
+        self.connection.autocommit = True
 
     def execute_procedure(self, procedure_name, params=None):
         """Выполнение хранимой процедуры"""
@@ -57,6 +59,7 @@ class DatabaseManager:
     def execute_query(self, sql):
         with self.connection.cursor() as cursor:
             cursor.execute(sql)
+            self.connection.commit()
 
     def close(self):
         """Закрытие соединения"""
