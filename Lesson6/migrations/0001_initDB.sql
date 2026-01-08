@@ -136,7 +136,7 @@ END $$;
 CREATE OR REPLACE FUNCTION UserPlayLogs_GameStart(
     p_TelegramId BIGINT
 )
-RETURNS UUID
+--RETURNS UUID
 LANGUAGE plpgsql
 AS $$
 DECLARE
