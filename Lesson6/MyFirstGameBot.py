@@ -145,7 +145,8 @@ def getMainMenu() -> ReplyKeyboardMarkup:
         resize_keyboard=True,  # Автоматическое изменение размера
         input_field_placeholder="Выберите игру...",  # Подсказка в поле ввода
         selective=True,  # ← Ключевой параметр для iOS
-        one_time_keyboard=True #скрывает кнопку после использования пользователем???
+        is_persistent=True,  # ← стараться сохранять
+        one_time_keyboard=False #скрывает кнопку после использования пользователем???
     )
     return keyboard
 
@@ -161,7 +162,8 @@ def getGameMenu(game_name: str):
         resize_keyboard=True,  # Автоматическое изменение размера
         input_field_placeholder=f"Игра: {game_name}",  # Подсказка в поле ввода
         selective=True,  # ← Ключевой параметр для iOS
-        one_time_keyboard=True #скрывает кнопку после использования пользователем
+        is_persistent=True,  # ← стараться сохранять
+        one_time_keyboard=False #скрывает кнопку после использования пользователем
     )
     return keyboard
 
